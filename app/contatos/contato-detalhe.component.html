@@ -1,0 +1,38 @@
+<div class="container">
+    <h2>Salvar Contato</h2>
+
+    <form (ngSubmit)="onSubmit()" #contatoForm="ngForm" novalidate>
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" [ngClass]="getFormGroupClass(nome.valid, nome.pristine)" placeholder="Nome.." name="nome" required
+            #nome="ngModel"
+            [(ngModel)]="contato.nome"> <!--Conceito de two-way data-binding-->
+            <div class="invalid-feedback" [hidden]="nome.valid || nome.pristine">
+                * Nome obrigatorio!
+            </div>
+        </div>
+
+        <div class="form-group">
+                <label for="nome">Email</label>
+                <input type="email" [ngClass]="getFormGroupClass(email.valid, email.pristine)" placeholder="Email" name="email" required
+                #email="ngModel"
+                [(ngModel)]="contato.email"> <!--Conceito de two-way data-binding-->
+                <div class="invalid-feedback" [hidden]="email.valid || email.pristine">
+                    * Email obrigatorio!
+                </div>
+        </div>
+
+        <div class="form-group">
+                <label for="nome">Telefone</label>
+                <input type="text" [ngClass]="getFormGroupClass(tel.valid, tel.pristine)" placeholder="(00) 0000-0000" name="Tel" required
+                #tel="ngModel"
+                [(ngModel)]="contato.tel"> <!--Conceito de two-way data-binding-->
+                <div class="invalid-feedback" [hidden]="tel.valid || tel.pristine">
+                    * Telefone obrigatorio!
+                </div>
+        </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="!contatoForm.form.valid">Salvar</button>
+        <a href="" class="btn btn-secondary" routerLink="/">Voltar</a>
+    </form>
+</div>
